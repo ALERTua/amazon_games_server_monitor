@@ -128,7 +128,7 @@ class NW_ServerMonitor(Cog, name='New World Server Monitor'):
                 LOG.info(f"{SERVER} status changed from {self.previous_result} to {server_status}")
                 await self.bot.notification(f"{SERVER} Status changed to {server_status}")
         else:
-            LOG.debug(f"Initing with {SERVER} status {server_status}")
+            LOG.info(f"Initing with {SERVER} status {server_status}")
 
         self.previous_result = server_status
 
