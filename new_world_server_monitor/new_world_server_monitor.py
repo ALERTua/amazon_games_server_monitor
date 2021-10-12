@@ -60,7 +60,7 @@ class NW_ServerMonitor(Cog, name='New World Server Monitor'):
         """
         self.bot = bot_
         self.bot.remove_command("help")
-        self.previous_result = 'up'
+        self.previous_result = None
         self.previous_result_date = pendulum.now(tz=pendulum.local_timezone())
         self.nw_server_monitor.start()
 
@@ -123,9 +123,12 @@ class NW_ServerMonitor(Cog, name='New World Server Monitor'):
         text = f"{SERVER} is {server_status} @ {self.previous_result_date.to_time_string()}"
         await self.bot.change_presence(activity=discord.Game(name=text))
 
-        if server_status != self.previous_result:
-            LOG.info(f"{SERVER} status changed from {self.previous_result} to {server_status}")
-            await self.bot.notification(f"{SERVER} Status changed to {server_status}")
+        if self.previous_result:
+            if server_status != self.previous_result:
+                LOG.info(f"{SERVER} status changed from {self.previous_result} to {server_status}")
+                await self.bot.notification(f"{SERVER} Status changed to {server_status}")
+        else:
+            LOG.debug(f"Initing with {SERVER} status {server_status}")
 
         self.previous_result = server_status
 
