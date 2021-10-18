@@ -118,12 +118,12 @@ class NW_ServerMonitor(Cog, name='New World Server Monitor'):
         output = OrderedDict(sorted(output.items()))
 
         self.previous_result_date = pendulum.now(tz=pendulum.local_timezone())
-        server_status = output.get(SERVER, 'unknown')
+        server_status = output.get(SERVER)
         LOG.debug(f"{SERVER} status: {server_status}")
         text = f"{SERVER} is {server_status} @ {self.previous_result_date.to_time_string()}"
         await self.bot.change_presence(activity=discord.Game(name=text))
 
-        if self.previous_result:
+        if self.previous_result and server_status:
             if server_status != self.previous_result:
                 LOG.info(f"{SERVER} status changed from {self.previous_result} to {server_status}")
                 await self.bot.notification(f"{SERVER} Status changed to {server_status}")
