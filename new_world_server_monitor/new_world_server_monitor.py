@@ -70,8 +70,12 @@ class NW_ServerMonitor(Cog, name='New World Server Monitor'):
     @tasks.loop(count=1)
     async def nw_server_monitor(self):
         LOG.trace()
-        await self.monitor()
-        LOG.green(f"Done. Sleeping {DELAY}")
+        try:
+            await self.monitor()
+        except Exception:
+            LOG.exception("Error running monitor. Sleeping {DELAY}")
+        else:
+            LOG.green(f"Done. Sleeping {DELAY}")
         await asyncio.sleep(DELAY)
         asyncio.ensure_future(self.nw_server_monitor())
 
