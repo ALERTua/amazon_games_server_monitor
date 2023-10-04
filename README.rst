@@ -1,3 +1,5 @@
+**This repository is archived. Feel free to fork it, or contact me to transfer the ownership.**
+
 =======
 New World Server Monitor Discord Bot
 =======
