@@ -1,0 +1,13 @@
+[project]
+name = "amazon-games-server-monitor"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.12.3",
+    "discord-py>=2.4.0",
+    "global-logger>=0.4.2",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+    "setuptools>=75.1.0",  # from setuptools._distutils.util import strtobool
+]

@@ -1,1 +1,0 @@
--r new_world_server_monitor/requirements.txt
