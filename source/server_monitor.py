@@ -106,13 +106,13 @@ class AmazonGamesServerMonitor(Cog, name='Amazon Game Server Monitor'):
             server_name = server.text.strip()
             server_statuses = {}
             up = (server.find('div', attrs={'class': STATUS_UP})
-                  or server.find('span', attrs={'aria-label': lambda x: x and 'is Good' in x}))
+                  or server.find('span', attrs={'aria-label': lambda x: x and (' is Good' in x or ' is Busy' in x)}))
             maintenance = (server.find('div', attrs={'class': STATUS_MAINTENANCE})
                            or server.find('span', attrs={'aria-label': lambda x: x and ' is Maintenance' in x}))
             down = (server.find('div', attrs={'class': STATUS_DOWN})
                     or server.find('span', attrs={'aria-label': lambda x: x and ' is Down' in x}))
             full = (server.find('div', attrs={'class': STATUS_FULL})
-                    or server.find('span', attrs={'aria-label': lambda x: x and ' is Busy' in x}))
+                    or server.find('span', attrs={'aria-label': lambda x: x and ' is Full' in x}))
             statuses = {
                 'up': up is not None,
                 'maintenance': maintenance is not None,
