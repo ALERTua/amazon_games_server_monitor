@@ -10,13 +10,11 @@ import pendulum
 import requests
 from bs4 import BeautifulSoup
 # noinspection PyPackageRequirements
-from discord import Intents
-# noinspection PyPackageRequirements
 from discord.ext import tasks
 # noinspection PyPackageRequirements
 from discord.ext.commands import Cog
 from global_logger import Log
-from source.discord import DiscordBotBase
+from source.discord import DiscordBotBase, Intents
 from source import env
 
 LOG = Log.get_logger()
@@ -114,7 +112,7 @@ class AmazonGamesServerMonitor(Cog, name='Amazon Game Server Monitor'):
             down = (server.find('div', attrs={'class': STATUS_DOWN})
                     or server.find('span', attrs={'aria-label': lambda x: x and ' is Down' in x}))
             full = (server.find('div', attrs={'class': STATUS_FULL})
-                    or server.find('span', attrs={'aria-label': lambda x: x and ' is Full' in x}))
+                    or server.find('span', attrs={'aria-label': lambda x: x and ' is Busy' in x}))
             statuses = {
                 'up': up is not None,
                 'maintenance': maintenance is not None,

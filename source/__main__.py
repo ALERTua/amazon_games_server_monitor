@@ -1,9 +1,7 @@
 import asyncio
 
-from discord import Intents
-
 from source import env
-from source.discord import DiscordBotBase
+from source.discord import DiscordBotBase, Intents
 from source.server_monitor import AmazonGamesServerMonitor
 
 
