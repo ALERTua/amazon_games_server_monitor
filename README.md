@@ -1,4 +1,5 @@
 # Amazon Games Server Monitor Discord Bot
+tested on New World and Throne and Liberty
 
 * DELAY_SEC - delay between checks
 * SERVER_NAME - server name to report about
